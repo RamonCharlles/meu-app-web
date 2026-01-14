@@ -3,273 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>P.A GOLD - Relatório Técnico</title>
+    <title>P.A GOLD - Relatório de Escopo Técnico</title>
     <style>
         :root {
             --pa-blue: #002d5a;
             --pa-gold: #d4af37;
             --table-border: #1a1a1a;
+            --light-gray: #f8f9fa;
         }
 
-        /* RESET PARA MOBILE */
         * { box-sizing: border-box; }
 
         body {
             font-family: 'Times New Roman', serif;
-            background-color: #333;
+            background-color: #444;
             margin: 0;
             padding: 0;
             color: var(--table-border);
         }
 
-        /* CONTAINER RESPONSIVO */
         .page {
-            width: 100%; /* Ocupa tudo no celular */
-            max-width: 210mm; /* Limita ao A4 no PC */
+            width: 100%;
+            max-width: 210mm;
             margin: 0 auto;
             background: white;
-            padding: 10mm;
-            min-height: 100vh;
+            padding: 12mm;
+            min-height: 297mm;
             display: flex;
             flex-direction: column;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        /* CABEÇALHO TÉCNICO ADAPTÁVEL */
+        /* CABEÇALHO SOFISTICADO */
         .header-main {
             width: 100%;
-            border: 2px solid var(--table-border);
-            border-collapse: collapse;
-            margin-bottom: 5px;
-        }
-
-        .header-main td {
-            border: 1px solid var(--table-border);
-            padding: 5px;
-            vertical-align: middle;
-        }
-
-        .logo-box { width: 30%; text-align: center; font-size: 20px; font-weight: bold; color: var(--pa-blue); }
-        .logo-box span { color: var(--pa-gold); }
-        .title-box { text-align: center; background: #f9f9f9; }
-        .title-box h1 { margin: 0; font-size: 14px; text-transform: uppercase; color: var(--pa-blue); }
-        .id-box { width: 25%; text-align: center; font-size: 10px; }
-
-        /* GRID DE DADOS RESPONSIVO */
-        .data-grid {
-            width: 100%;
+            border: 2.5px solid var(--pa-blue);
             border-collapse: collapse;
             margin-bottom: 10px;
         }
 
-        .data-grid td {
-            border: 1px solid var(--table-border);
-            padding: 6px;
-            display: block; /* Empilha no mobile */
-            width: 100% !important;
+        .header-main td {
+            border: 1px solid var(--pa-blue);
+            padding: 10px;
+            vertical-align: middle;
         }
 
+        .logo-box { width: 30%; text-align: center; font-size: 26px; font-weight: bold; color: var(--pa-blue); letter-spacing: 1px; }
+        .logo-box span { color: var(--pa-gold); }
+        
+        .title-box { text-align: center; background: var(--light-gray); }
+        .title-box h1 { margin: 0; font-size: 16px; text-transform: uppercase; color: var(--pa-blue); border-bottom: 1px solid var(--pa-gold); display: inline-block; padding-bottom: 2px; }
+        .title-box p { margin: 5px 0 0 0; font-size: 10px; font-weight: bold; color: #666; text-transform: uppercase; }
+
+        .id-box { width: 25%; text-align: center; font-size: 11px; font-weight: bold; line-height: 1.4; }
+
+        /* GRID DE DADOS TÉCNICOS */
+        .data-grid { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+        .data-grid td { border: 1px solid var(--table-border); padding: 6px 10px; width: 100%; display: block; }
+        
         @media (min-width: 600px) {
-            .data-grid td { display: table-cell; width: 25% !important; }
-            .logo-box { font-size: 26px; }
-            .title-box h1 { font-size: 16px; }
-            .page { padding: 12mm; }
+            .data-grid td { display: table-cell; width: 25%; }
         }
 
-        .data-grid label { display: block; font-size: 9px; font-weight: bold; color: #444; text-transform: uppercase; }
-        .data-grid input { width: 100%; border: none; font-size: 14px; font-weight: bold; outline: none; font-family: Arial, sans-serif; background: #fdfdfd; }
+        .data-grid label { display: block; font-size: 9px; font-weight: bold; color: var(--pa-blue); text-transform: uppercase; margin-bottom: 2px; }
+        .data-grid input { width: 100%; border: none; font-size: 14px; font-weight: bold; outline: none; font-family: Arial, sans-serif; }
 
         .section-header {
             background: var(--pa-blue);
-            color: white;
+            color: var(--pa-gold);
             padding: 10px;
             font-size: 11px;
             font-weight: bold;
             text-transform: uppercase;
             border: 1px solid var(--table-border);
+            letter-spacing: 1px;
         }
 
-        /* BOTÃO DE ADICIONAR IMAGENS */
-        .add-btn-container {
-            padding: 20px;
-            text-align: center;
-            border: 2px dashed var(--pa-blue);
-            margin: 10px 0;
-            background: #fdfdfd;
-        }
-
-        /* CARDS DE FOTOS RESPONSIVOS */
+        /* ÁREA DE FOTOS E EVIDÊNCIAS */
+        #photo-area { order: 1; }
         .photo-entry {
             border: 1px solid var(--table-border);
             border-top: none;
-            padding: 10px;
+            padding: 15px;
             display: flex;
-            flex-direction: column; /* Empilha no mobile */
+            flex-direction: column;
             gap: 15px;
             page-break-inside: avoid;
             background: #fff;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         @media (min-width: 600px) {
             .photo-entry { flex-direction: row; }
-            .photo-box { width: 260px; flex-shrink: 0; }
+            .photo-box { width: 280px; flex-shrink: 0; }
         }
 
-        .photo-box { position: relative; border: 1px solid #999; height: 220px; background: #eee; }
+        .photo-box { position: relative; border: 1px solid #999; height: 210px; background: #eee; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
         .photo-box img { width: 100%; height: 100%; object-fit: cover; }
 
-        .description-box { flex-grow: 1; }
-        .description-box textarea {
-            width: 100%;
-            height: 150px;
-            border: 1px solid #eee;
-            padding: 8px;
-            font-size: 14px;
-            font-family: 'Courier New', monospace;
-            resize: none;
-            outline: none;
-        }
+        .description-box { flex-grow: 1; display: flex; flex-direction: column; }
+        .description-box label { font-size: 11px; font-weight: bold; color: var(--pa-blue); border-bottom: 1px solid var(--pa-gold); margin-bottom: 8px; padding-bottom: 2px; }
+        .description-box textarea { width: 100%; flex-grow: 1; min-height: 150px; border: none; font-size: 13px; font-family: 'Courier New', monospace; resize: none; outline: none; line-height: 1.5; }
 
-        /* JURÍDICO */
-        .legal-frame { margin-top: auto; border: 1px solid var(--table-border); padding: 12px; background: #fdfdfd; }
-        .legal-title { font-size: 11px; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #000; margin-bottom: 8px; color: var(--pa-blue); }
-        .legal-text { font-size: 10px; text-align: justify; line-height: 1.4; }
-        .legal-text ol { padding-left: 18px; margin: 0; }
-
-        /* ASSINATURAS */
-        .signature-grid { 
-            margin-top: 25px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 30px; 
-            margin-bottom: 20px; 
-        }
-
-        @media (min-width: 600px) {
-            .signature-grid { flex-direction: row; justify-content: space-around; }
-            .sig-line { width: 40%; }
-        }
-
-        .sig-line { border-top: 1px solid var(--table-border); text-align: center; font-size: 11px; padding-top: 5px; font-weight: bold; }
-
-        /* BOTÃO FINAL */
-        .footer-controls { text-align: center; padding: 30px 0; border-top: 1px solid #ddd; }
-        .btn-action {
+        /* BOTÃO INSERIR EVIDÊNCIAS (DINÂMICO) */
+        .add-btn-wrapper { order: 2; padding: 20px 0; text-align: center; }
+        .btn-add {
             background: var(--pa-blue);
             color: var(--pa-gold);
-            border: 1px solid var(--pa-gold);
+            border: 2px solid var(--pa-gold);
             padding: 15px 30px;
             font-weight: bold;
             cursor: pointer;
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: 12px;
             border-radius: 4px;
-            width: 100%; /* Ocupa tudo no toque do celular */
-            max-width: 300px;
+            display: inline-block;
+            width: 100%;
+            max-width: 400px;
+            transition: 0.3s;
         }
 
-        /* AJUSTES DE IMPRESSÃO - FORÇA PADRÃO A4 */
+        /* OBRIGAÇÕES LEGAIS E TÉCNICAS */
+        .legal-frame { order: 3; margin-top: 20px; border: 2px solid var(--table-border); padding: 15px; background: #fdfdfd; }
+        .legal-title { font-size: 12px; font-weight: bold; text-transform: uppercase; border-bottom: 1.5px solid var(--pa-blue); margin-bottom: 10px; color: var(--pa-blue); }
+        .legal-text { font-size: 10.5px; text-align: justify; line-height: 1.4; color: #222; }
+        .legal-text ol { padding-left: 20px; margin: 0; }
+        .legal-text li { margin-bottom: 6px; }
+
+        /* ASSINATURAS */
+        .signature-grid { order: 4; margin-top: 30px; display: flex; flex-direction: column; gap: 40px; margin-bottom: 20px; }
+        @media (min-width: 600px) {
+            .signature-grid { flex-direction: row; justify-content: space-around; }
+            .sig-line { width: 40%; }
+        }
+        .sig-line { border-top: 1.5px solid var(--pa-blue); text-align: center; font-size: 11px; padding-top: 5px; font-weight: bold; text-transform: uppercase; }
+
+        /* BOTÃO FINAL PDF */
+        .footer-controls { order: 5; text-align: center; padding: 30px 0; border-top: 1px solid #ddd; }
+        .btn-pdf { background: #1b5e20; color: white; border: none; padding: 18px 40px; font-weight: bold; text-transform: uppercase; border-radius: 4px; cursor: pointer; width: 100%; max-width: 350px; }
+
         @media print {
             @page { size: A4; margin: 0; }
             body { background: white; padding: 0; }
-            .page { 
-                width: 210mm; 
-                height: 297mm; 
-                padding: 10mm; 
-                box-shadow: none; 
-            }
+            .page { width: 210mm; height: 297mm; padding: 12mm; box-shadow: none; display: block; }
             .data-grid td { display: table-cell !important; width: 25% !important; }
             .photo-entry { flex-direction: row !important; }
-            .photo-box { width: 240px !important; }
+            .photo-box { width: 260px !important; }
             .signature-grid { flex-direction: row !important; }
             .no-print { display: none !important; }
         }
     </style>
 </head>
-<body onbeforeunload="return 'Dados não salvos serão perdidos.'">
+<body onbeforeunload="return 'Atenção: Dados não salvos serão perdidos.'">
 
     <div class="page">
         <table class="header-main">
             <tr>
                 <td class="logo-box">P.A <span>GOLD</span></td>
                 <td class="title-box">
-                    <h1>Relatório de Escopo Técnico</h1>
-                    <span style="font-size: 9px;">Diagnóstico de Manutenção de Ativos</span>
+                    <h1>Relatório de Escopo e Diagnóstico Técnico</h1>
+                    <p>Engenharia de Reforma e Manutenção de Ativos</p>
                 </td>
                 <td class="id-box">
-                    ID: <span id="doc-id"></span><br>
-                    <span id="doc-date"></span>
+                    DOC ID: <span id="doc-id"></span><br>
+                    DATA: <span id="doc-date"></span>
                 </td>
             </tr>
         </table>
 
         <table class="data-grid">
             <tr>
-                <td><label>OS</label><input type="text" id="os" class="save" placeholder="---"></td>
-                <td><label>SC</label><input type="text" id="sc" class="save" placeholder="---"></td>
-                <td><label>Fabricante</label><input type="text" id="fab" class="save" placeholder="---"></td>
-                <td><label>Part Number</label><input type="text" id="pn" class="save" placeholder="---"></td>
+                <td><label>Nº Ordem de Serviço (OS)</label><input type="text" id="os" class="save" placeholder="..."></td>
+                <td><label>Nº Solicitação Compra (SC)</label><input type="text" id="sc" class="save" placeholder="..."></td>
+                <td><label>Fabricante do Ativo</label><input type="text" id="fab" class="save" placeholder="..."></td>
+                <td><label>Part Number (P/N)</label><input type="text" id="pn" class="save" placeholder="..."></td>
             </tr>
             <tr>
-                <td colspan="2"><label>Descrição do Ativo</label><input type="text" id="desc" class="save" placeholder="---"></td>
-                <td><label>TAG Equipamento</label><input type="text" id="tag" class="save" placeholder="---"></td>
-                <td><label>Nº Série (S/N)</label><input type="text" id="sn" class="save" placeholder="---"></td>
+                <td colspan="2"><label>Descrição Detalhada do Componente</label><input type="text" id="desc" class="save" placeholder="..."></td>
+                <td><label>TAG Equipamento</label><input type="text" id="tag" class="save" placeholder="..."></td>
+                <td><label>Nº de Série (S/N)</label><input type="text" id="sn" class="save" placeholder="..."></td>
             </tr>
         </table>
 
-        <div class="section-header">Evidências e Laudo Técnico</div>
+        <div class="section-header">Laudo Técnico e Registro de Evidências</div>
 
-        <div class="add-btn-container no-print">
-            <label class="btn-action" style="background: var(--pa-gold); color: var(--pa-blue); display: block; margin: 0 auto;">
-                + INSERIR FOTO DA FALHA
+        <div id="photo-area"></div>
+
+        <div class="add-btn-wrapper no-print">
+            <label class="btn-add">
+                + INSERIR EVIDÊNCIAS TÉCNICAS
                 <input type="file" id="img-input" accept="image/*" multiple capture="environment" style="display:none;">
             </label>
         </div>
 
-        <div id="photo-area"></div>
-
         <div class="legal-frame">
-            <div class="legal-title">Obrigações e Responsabilidade do Fornecedor</div>
+            <div class="legal-title">Instrumento de Obrigações e Responsabilidade Técnica</div>
             <div class="legal-text">
-                O fornecedor obriga-se irrevogavelmente a (ID: <span class="id-ref"></span>):
+                O Fornecedor, mediante a aceitação deste escopo (Ref: <span class="id-ref"></span>), compromete-se irrevogavelmente às seguintes cláusulas de conformidade:
                 <ol>
-                    <li>Aplicar exclusivamente componentes <strong>novos e originais</strong> conforme P/N listado.</li>
-                    <li>Garantir que este diagnóstico é exaustivo; aditivos posteriores não serão aceitos.</li>
-                    <li>Responder por vícios ocultos e garantir a rastreabilidade total de materiais aplicados.</li>
+                    <li><strong>Primazia de Insumos:</strong> É obrigatória a aplicação de componentes novos e genuínos conforme P/N especificado. A utilização de itens recuperados ou paralelos sem autorização formal da P.A GOLD ensejará nulidade contratual e sanções.</li>
+                    <li><strong>Irretratabilidade do Diagnóstico:</strong> O fornecedor declara que o presente levantamento técnico é exaustivo e definitivo. Custos adicionais por vícios de inspeção não serão reconhecidos após o início da execução.</li>
+                    <li><strong>Garantia de Vícios Ocultos:</strong> O fornecedor responde técnica e civilmente por anomalias decorrentes de montagem inadequada ou subdimensionamento de componentes internos não detectáveis visualmente.</li>
+                    <li><strong>Rastreabilidade Total:</strong> Deve ser garantida a rastreabilidade de materiais (rolamentos, ligas, vedações), mantendo-se os registros de procedência para auditoria por até 12 meses após a entrega.</li>
                 </ol>
             </div>
         </div>
 
         <div class="signature-grid">
-            <div class="sig-line">Inspeção P.A GOLD</div>
-            <div class="sig-line">Representante Fornecedor</div>
+            <div class="sig-line">Inspeção Técnica - P.A GOLD</div>
+            <div class="sig-line">Representante Legal - Fornecedor</div>
         </div>
 
         <div class="footer-controls no-print">
-            <button class="btn-action" style="background: #2e7d32; color: white; border: none;" onclick="window.print()">
-                GERAR PDF FINAL
+            <button class="btn-pdf" onclick="window.print()">
+                EMITIR RELATÓRIO FINAL (PDF)
             </button>
         </div>
     </div>
 
     <script>
+        // Data e Gerador de ID
         const now = new Date();
         document.getElementById('doc-date').innerText = now.toLocaleDateString('pt-BR');
         
-        let savedID = localStorage.getItem('pa_gold_id') || `PAG-${now.getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+        let savedID = localStorage.getItem('pa_gold_id') || `PAG-REF-${now.getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
         document.getElementById('doc-id').innerText = savedID;
         document.querySelectorAll('.id-ref').forEach(el => el.innerText = savedID);
         localStorage.setItem('pa_gold_id', savedID);
 
+        // Sistema de Salvamento de Campos
         document.querySelectorAll('.save').forEach(input => {
             input.value = localStorage.getItem('pa_field_' + input.id) || '';
             input.addEventListener('input', (e) => localStorage.setItem('pa_field_' + e.target.id, e.target.value));
         });
 
-        let itemCount = 0;
+        // Handler de Evidências (Fotos)
+        let count = 0;
         document.getElementById('img-input').addEventListener('change', function() {
             Array.from(this.files).forEach(file => {
-                itemCount++;
+                count++;
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const entry = document.createElement('div');
@@ -277,13 +249,16 @@
                     entry.innerHTML = `
                         <div class="photo-box">
                             <img src="${e.target.result}">
-                            <button class="no-print" onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:5px; left:5px; background:red; color:white; border:none; padding:8px; border-radius:4px; font-weight:bold;">REMOVER</button>
+                            <button class="no-print" onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:5px; left:5px; background:rgba(255,0,0,0.8); color:white; border:none; padding:8px; border-radius:2px; cursor:pointer; font-weight:bold;">EXCLUIR</button>
                         </div>
                         <div class="description-box">
-                            <label style="font-size:10px; font-weight:bold;">ITEM Nº ${itemCount.toString().padStart(2, '0')}</label>
-                            <textarea placeholder="Relatório técnico do item..."></textarea>
+                            <label>CONSTATATAÇÃO TÉCNICA Nº ${count.toString().padStart(2, '0')}</label>
+                            <textarea placeholder="Descreva as anomalias, desgastes e ações corretivas fundamentadas para este item especificamente..."></textarea>
                         </div>`;
                     document.getElementById('photo-area').appendChild(entry);
+                    
+                    // Rola a tela para o botão de adicionar que "desceu"
+                    window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
                 }
                 reader.readAsDataURL(file);
             });
