@@ -3,147 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>P.A Gold - Escopo de Reforma</title>
+    <title>P.A GOLD - Relatório Técnico de Escopo</title>
     <style>
         :root {
-            --primary: #d4af37; /* Dourado P.A Gold */
-            --dark: #1a1a1a;
-            --light: #f4f4f4;
+            --pa-blue: #002d5a;
+            --pa-gold: #d4af37;
+            --table-border: #1a1a1a;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light);
+            font-family: 'Times New Roman', serif;
+            background-color: #333;
             margin: 0;
-            padding: 20px;
-            color: var(--dark);
+            padding: 10px;
         }
 
-        .container {
-            max-width: 600px;
-            background: white;
+        .page {
+            width: 210mm;
             margin: 0 auto;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .header {
-            text-align: center;
-            border-bottom: 2px solid var(--primary);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-        }
-
-        .header h1 { margin: 0; color: var(--dark); font-size: 24px; }
-        .header p { margin: 5px 0; font-size: 14px; color: #666; }
-
-        .form-group { margin-bottom: 15px; }
-        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 14px; }
-        
-        input, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
+            background: white;
+            padding: 12mm;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            min-height: 297mm;
             box-sizing: border-box;
-            font-size: 16px; /* Evita zoom automático no iOS */
+            display: flex;
+            flex-direction: column;
         }
 
-        .photo-preview {
+        /* Cabeçalho Técnico */
+        .header-main {
+            width: 100%;
+            border: 2px solid var(--table-border);
+            border-collapse: collapse;
+            margin-bottom: 5px;
+        }
+
+        .header-main td {
+            border: 1px solid var(--table-border);
+            padding: 8px;
+            vertical-align: middle;
+        }
+
+        .logo-box { width: 30%; text-align: center; font-size: 26px; font-weight: bold; color: var(--pa-blue); }
+        .logo-box span { color: var(--pa-gold); }
+        .title-box { width: 45%; text-align: center; background: #f9f9f9; }
+        .title-box h1 { margin: 0; font-size: 16px; text-transform: uppercase; color: var(--pa-blue); }
+        .id-box { width: 25%; text-align: center; font-size: 11px; }
+
+        /* Dados de Rastreabilidade */
+        .data-grid { width: 100%; border-collapse: collapse; margin-bottom: 10px; }
+        .data-grid td { border: 1px solid var(--table-border); padding: 5px 8px; width: 25%; }
+        .data-grid label { display: block; font-size: 9px; font-weight: bold; color: #444; text-transform: uppercase; }
+        .data-grid input { width: 100%; border: none; font-size: 13px; font-weight: bold; outline: none; font-family: Arial, sans-serif; }
+
+        /* Seção de Fotos */
+        .section-header {
+            background: var(--pa-blue);
+            color: white;
+            padding: 10px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border: 1px solid var(--table-border);
+        }
+
+        .add-btn-container {
+            padding: 15px 0;
+            text-align: center;
+            border: 1px dashed var(--pa-blue);
+            margin: 10px 0;
+            background: #fdfdfd;
+        }
+
+        .photo-entry {
+            border: 1px solid var(--table-border);
+            border-top: none;
+            padding: 10px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+            grid-template-columns: 260px 1fr;
+            gap: 15px;
+            page-break-inside: avoid;
+            background: #fff;
+            margin-bottom: 5px;
+        }
+
+        .photo-box { position: relative; border: 1px solid #999; height: 190px; background: #eee; }
+        .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+
+        .description-box textarea {
+            width: 100%;
+            height: 150px;
+            border: none;
+            padding: 5px 0;
+            font-size: 13px;
+            font-family: 'Courier New', monospace;
+            resize: none;
+            outline: none;
+        }
+
+        /* Cláusulas Jurídicas Reestruturadas */
+        .legal-frame { margin-top: auto; border: 1px solid var(--table-border); padding: 12px; background: #fdfdfd; }
+        .legal-title { font-size: 11px; font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #000; margin-bottom: 8px; color: var(--pa-blue); }
+        .legal-text { font-size: 10px; text-align: justify; line-height: 1.4; }
+        .legal-text ol { padding-left: 18px; margin: 0; }
+        .legal-text li { margin-bottom: 4px; }
+
+        /* Assinaturas */
+        .signature-grid { margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 20px; }
+        .sig-line { border-top: 1px solid var(--table-border); text-align: center; font-size: 11px; padding-top: 5px; text-transform: uppercase; font-weight: bold; }
+
+        /* Botões */
+        .btn-action {
+            background: var(--pa-blue);
+            color: var(--pa-gold);
+            border: 1px solid var(--pa-gold);
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 11px;
+            display: inline-block;
+        }
+
+        .footer-controls {
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #ddd;
             margin-top: 10px;
         }
 
-        .photo-preview img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 4px;
-            border: 1px solid #ddd;
-        }
-
-        button {
-            width: 100%;
-            background-color: var(--dark);
-            color: var(--primary);
-            padding: 15px;
-            border: none;
-            border-radius: 6px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 20px;
-            text-transform: uppercase;
-        }
-
-        button:hover { background-color: #333; }
-
         @media print {
-            .no-print { display: none; }
-            .container { box-shadow: none; border: none; width: 100%; }
+            body { background: white; padding: 0; }
+            .page { box-shadow: none; width: 100%; margin: 0; padding: 0; }
+            .no-print, .remove-btn, .footer-controls, .add-btn-container { display: none !important; }
         }
     </style>
 </head>
-<body>
+<body onbeforeunload="return 'Dados não salvos serão perdidos.'">
 
-<div class="container">
-    <div class="header">
-        <h1>P.A GOLD</h1>
-        <p>Escopo de Serviço - Reforma de Componentes</p>
+    <div class="page">
+        <table class="header-main">
+            <tr>
+                <td class="logo-box">P.A <span>GOLD</span></td>
+                <td class="title-box">
+                    <h1>Relatório de Escopo e Diagnóstico Técnico</h1>
+                    <span style="font-size: 10px;">Manutenção e Reforma de Componentes</span>
+                </td>
+                <td class="id-box">
+                    <strong>DOC ID:</strong> <span id="doc-id"></span><br>
+                    <strong>EMISSÃO:</strong> <span id="doc-date"></span>
+                </td>
+            </tr>
+        </table>
+
+        <table class="data-grid">
+            <tr>
+                <td><label>Ordem de Serviço (OS)</label><input type="text" id="os" class="save"></td>
+                <td><label>Solicitação Compra (SC)</label><input type="text" id="sc" class="save"></td>
+                <td><label>Fabricante</label><input type="text" id="fab" class="save"></td>
+                <td><label>Part Number (P/N)</label><input type="text" id="pn" class="save"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><label>Descrição do Ativo</label><input type="text" id="desc" class="save"></td>
+                <td><label>TAG do Equipamento</label><input type="text" id="tag" class="save"></td>
+                <td><label>Número de Série (S/N)</label><input type="text" id="sn" class="save"></td>
+            </tr>
+        </table>
+
+        <div class="section-header">Evidências Técnicas e Constatações de Campo</div>
+
+        <div class="add-btn-container no-print">
+            <label class="btn-action">
+                + INSERIR REGISTRO FOTOGRÁFICO
+                <input type="file" id="img-input" accept="image/*" multiple capture="environment" style="display:none;">
+            </label>
+        </div>
+
+        <div id="photo-area"></div>
+
+        <div class="legal-frame">
+            <div class="legal-title">Instrumento de Obrigações e Responsabilidade do Fornecedor</div>
+            <div class="legal-text">
+                O fornecedor, mediante assinatura deste instrumento (Ref: <span class="id-ref"></span>), obriga-se irrevogavelmente a:
+                <ol>
+                    <li><strong>Primazia de Insumos:</strong> Aplicar exclusivamente componentes novos e originais, sendo vedada a utilização de itens recuperados ou de procedência diversa ao P/N especificado sem anuência formal.</li>
+                    <li><strong>Limitação de Escopo:</strong> Declarar que o presente diagnóstico é exaustivo. Eventuais falhas não reportadas neste ato serão de responsabilidade e ônus do fornecedor.</li>
+                    <li><strong>Rastreabilidade de Insumos:</strong> Disponibilizar, sob demanda, certificados de origem e notas fiscais de aquisição de todos os componentes aplicados na reforma.</li>
+                    <li><strong>Garantia de Execução:</strong> Responder integralmente por vícios ocultos decorrentes de falhas de montagem ou subdimensionamento de componentes internos detectados em operação.</li>
+                    <li><strong>Sigilo Técnico:</strong> Manter sigilo sobre os dados operacionais e diagnósticos aqui contidos, sendo proibida a divulgação sem autorização da P.A GOLD.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="signature-grid">
+            <div class="sig-line">Inspeção Técnica - P.A GOLD</div>
+            <div class="sig-line">Responsável Legal - Fornecedor</div>
+        </div>
+
+        <div class="footer-controls no-print">
+            <button class="btn-action" style="background: #2e7d32; color: white; border: none; padding: 15px 50px; cursor: pointer;" onclick="window.print()">
+                FINALIZAR E EMITIR PDF
+            </button>
+        </div>
     </div>
 
-    <form id="escopoForm">
-        <div class="form-group">
-            <label>Número da Ordem de Serviço (OS)</label>
-            <input type="text" id="os" placeholder="Ex: 2024-001" required>
-        </div>
-
-        <div class="form-group">
-            <label>PN do Componente (Part Number)</label>
-            <input type="text" id="pn" placeholder="Digite o PN" required>
-        </div>
-
-        <div class="form-group">
-            <label>Número de Série</label>
-            <input type="text" id="serie" placeholder="Digite o S/N" required>
-        </div>
-
-        <div class="form-group">
-            <label>Descrição do Serviço Desejado</label>
-            <textarea id="descricao" rows="4" placeholder="Detalhe as falhas ou serviços necessários..."></textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Anexar Fotos do Item</label>
-            <input type="file" id="fotos" accept="image/*" multiple class="no-print">
-            <div class="photo-preview" id="preview"></div>
-        </div>
-
-        <button type="button" class="no-print" onclick="window.print()">Gerar PDF / Imprimir</button>
-    </form>
-</div>
-
-<script>
-    // Preview das imagens
-    document.getElementById('fotos').addEventListener('change', function(e) {
-        const preview = document.getElementById('preview');
-        preview.innerHTML = '';
+    <script>
+        // Sistema de Data e ID
+        const now = new Date();
+        document.getElementById('doc-date').innerText = now.toLocaleDateString('pt-BR');
         
-        Array.from(this.files).forEach(file => {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = document.createElement('img');
-                img.src = event.target.result;
-                preview.appendChild(img);
-            }
-            reader.readAsDataURL(file);
-        });
-    });
-</script>
+        let savedID = localStorage.getItem('pa_gold_id') || `PAG-REF-${now.getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+        document.getElementById('doc-id').innerText = savedID;
+        document.querySelectorAll('.id-ref').forEach(el => el.innerText = savedID);
+        localStorage.setItem('pa_gold_id', savedID);
 
+        // Auto-save
+        document.querySelectorAll('.save').forEach(input => {
+            input.value = localStorage.getItem('pa_field_' + input.id) || '';
+            input.addEventListener('input', (e) => localStorage.setItem('pa_field_' + e.target.id, e.target.value));
+        });
+
+        // Handler de Imagens
+        let itemCount = 0;
+        document.getElementById('img-input').addEventListener('change', function() {
+            Array.from(this.files).forEach(file => {
+                itemCount++;
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const entry = document.createElement('div');
+                    entry.className = 'photo-entry';
+                    entry.innerHTML = `
+                        <div class="photo-box">
+                            <img src="${e.target.result}">
+                            <button class="no-print" onclick="this.parentElement.parentElement.remove()" style="position:absolute; top:4px; left:4px; background:rgba(255,0,0,0.8); color:white; border:none; padding:4px 8px; cursor:pointer; font-weight:bold; border-radius:2px;">EXCLUIR</button>
+                        </div>
+                        <div class="description-box">
+                            <label style="font-size:10px; font-weight:bold; color:var(--pa-blue);">CONSTATATAÇÃO TÉCNICA Nº ${itemCount.toString().padStart(2, '0')}</label>
+                            <textarea placeholder="Descreva as anomalias, desgastes e ações corretivas fundamentadas para este item especificamente..."></textarea>
+                        </div>`;
+                    document.getElementById('photo-area').appendChild(entry);
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+    </script>
 </body>
 </html>
