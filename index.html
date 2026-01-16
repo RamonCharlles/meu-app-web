@@ -31,9 +31,7 @@
             padding-bottom: 100px;
         }
 
-        .report-content {
-            padding: 15px;
-        }
+        .report-content { padding: 15px; }
 
         /* CABEÇALHO */
         .header-main {
@@ -51,44 +49,47 @@
 
         /* GRID DE DADOS */
         .data-grid { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
-        .data-grid td { border: 1px solid var(--table-border); padding: 10px; width: 100%; display: block; }
+        .data-grid td { border: 1px solid var(--table-border); padding: 8px; width: 100%; display: block; }
         
         @media (min-width: 600px) {
             .data-grid td { display: table-cell; width: 25% !important; }
         }
 
-        .data-grid label { display: block; font-size: 9px; font-weight: bold; color: var(--pa-blue); text-transform: uppercase; margin-bottom: 4px; }
+        .data-grid label { display: block; font-size: 9px; font-weight: bold; color: var(--pa-blue); text-transform: uppercase; margin-bottom: 2px; }
         .data-grid input { width: 100%; border: none; font-size: 14px; font-weight: bold; outline: none; background: transparent; }
 
         .section-header {
             background: var(--pa-blue); color: var(--pa-gold);
-            padding: 12px; font-size: 11px; font-weight: bold;
+            padding: 10px; font-size: 11px; font-weight: bold;
             text-transform: uppercase; border: 1px solid var(--table-border);
-            margin-bottom: 2px;
+            margin-bottom: 5px;
         }
 
         /* EVIDÊNCIAS */
         .photo-entry {
             border: 1px solid var(--table-border);
-            padding: 15px; display: flex; flex-direction: column; gap: 15px;
+            padding: 10px; display: flex; flex-direction: column; gap: 10px;
             background: #fff; margin-bottom: 10px;
+            page-break-inside: avoid; /* Evita corte no meio da foto */
+            break-inside: avoid;
         }
         @media (min-width: 600px) {
             .photo-entry { flex-direction: row; }
-            .photo-box { width: 280px; flex-shrink: 0; }
+            .photo-box { width: 250px; flex-shrink: 0; }
         }
-        .photo-box { position: relative; border: 1px solid #999; height: 210px; background: #eee; }
+        .photo-box { position: relative; border: 1px solid #999; height: 180px; background: #eee; }
         .photo-box img { width: 100%; height: 100%; object-fit: cover; }
-        .description-box textarea { width: 100%; height: 150px; border: none; font-size: 14px; font-family: 'Courier New', monospace; resize: none; outline: none; }
+        .description-box { flex-grow: 1; }
+        .description-box textarea { width: 100%; height: 150px; border: none; font-size: 13px; font-family: 'Courier New', monospace; resize: none; outline: none; }
 
         /* JURÍDICO */
-        .legal-frame { border: 2px solid var(--table-border); padding: 15px; background: #fdfdfd; margin-top: 20px; }
-        .legal-title { font-size: 12px; font-weight: bold; text-transform: uppercase; color: var(--pa-blue); border-bottom: 1px solid #000; margin-bottom: 10px; }
-        .legal-text { font-size: 11px; text-align: justify; line-height: 1.4; }
+        .legal-frame { border: 1.5px solid var(--table-border); padding: 10px; background: #fdfdfd; margin-top: 15px; page-break-inside: avoid; }
+        .legal-title { font-size: 11px; font-weight: bold; text-transform: uppercase; color: var(--pa-blue); border-bottom: 1px solid #000; margin-bottom: 5px; }
+        .legal-text { font-size: 10px; text-align: justify; line-height: 1.3; }
 
-        .signature-grid { margin-top: 30px; display: flex; flex-direction: column; gap: 40px; }
+        .signature-grid { margin-top: 25px; display: flex; flex-direction: column; gap: 30px; }
         @media (min-width: 600px) { .signature-grid { flex-direction: row; justify-content: space-around; } .sig-line { width: 40%; } }
-        .sig-line { border-top: 1.5px solid var(--pa-blue); text-align: center; font-size: 11px; padding-top: 5px; font-weight: bold; }
+        .sig-line { border-top: 1.5px solid var(--pa-blue); text-align: center; font-size: 10px; padding-top: 5px; font-weight: bold; }
 
         /* RODAPÉ FIXO */
         .actions-bar {
@@ -98,30 +99,29 @@
             box-shadow: 0 -5px 15px rgba(0,0,0,0.1); z-index: 1000;
         }
 
-        .btn {
-            padding: 15px; border-radius: 8px; border: none; font-weight: bold;
-            text-transform: uppercase; font-size: 12px; cursor: pointer;
-        }
-        .btn-add { background: var(--pa-blue); color: var(--pa-gold); border: 1px solid var(--pa-gold); }
+        .btn { padding: 15px; border-radius: 8px; border: none; font-weight: bold; text-transform: uppercase; cursor: pointer; }
+        .btn-add { background: var(--pa-blue); color: var(--pa-gold); }
         .btn-pdf { background: #2e7d32; color: white; }
 
+        /* AJUSTES DE IMPRESSÃO - CORREÇÃO DE PÁGINA EM BRANCO */
         @media print {
-            body { background: white; }
+            @page { size: auto; margin: 10mm; }
+            body { background: white; margin: 0; }
             .actions-bar, .remove-btn { display: none !important; }
-            .app-container { max-width: 100%; padding: 0; margin: 0; }
+            .app-container { width: 100%; max-width: 100%; margin: 0; padding: 0; border: none; }
             .report-content { padding: 0; }
-            .data-grid td { display: table-cell !important; width: 25% !important; }
-            .photo-entry { flex-direction: row !important; page-break-inside: avoid; }
-            .photo-box { width: 240px !important; }
-            .signature-grid { flex-direction: row !important; }
-            .legal-frame { page-break-inside: avoid; }
+            .data-grid td { display: table-cell !important; width: 25% !important; border: 1px solid #000 !important; }
+            .photo-entry { flex-direction: row !important; margin-bottom: 15px; border: 1px solid #000 !important; }
+            .photo-box { width: 220px !important; height: 160px !important; }
+            .signature-grid { flex-direction: row !important; margin-top: 40px; }
+            textarea { border: none !important; }
         }
     </style>
 </head>
 <body>
 
     <div class="app-container">
-        <div class="report-content" id="print-area">
+        <div class="report-content">
             <table class="header-main">
                 <tr>
                     <td class="logo-box">P.A <span>GOLD</span></td>
@@ -146,11 +146,11 @@
                 <tr>
                     <td colspan="2"><label>Descrição do Ativo</label><input type="text" class="save" id="desc"></td>
                     <td><label>Nº Série/Tag Peça</label><input type="text" class="save" id="sn"></td>
-                    <td><label>TAG </label><input type="text" class="save" id="tag"></td>
+                    <td><label>TAG da Frota</label><input type="text" class="save" id="tag"></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><label>Responsável Técnico (Emissão)</label><input type="text" class="save" id="resp-emissao" placeholder="Nome completo"></td>
-                    <td colspan="2"><label>Horímetro de Retirada</label><input type="text" class="save" id="horimetro" placeholder="Ex: 12.450 h"></td>
+                    <td colspan="2"><label>Responsável Técnico (Emissão)</label><input type="text" class="save" id="resp-emissao"></td>
+                    <td colspan="2"><label>Horímetro de Retirada</label><input type="text" class="save" id="horimetro"></td>
                 </tr>
             </table>
 
@@ -160,13 +160,7 @@
             <div class="legal-frame">
                 <div class="legal-title">Instrumento de Obrigações e Responsabilidade Técnica</div>
                 <div class="legal-text">
-                    O Fornecedor, mediante a aceitação deste escopo (Ref: <span class="id-ref"></span>), compromete-se irrevogavelmente às seguintes cláusulas de conformidade:
-                    <ol>
-                        <li><strong>Primazia de Insumos:</strong> É obrigatória a aplicação de componentes novos e genuínos conforme P/N especificado.</li>
-                        <li><strong>Irretratabilidade do Diagnóstico:</strong> O fornecedor declara que o presente levantamento técnico é exaustivo e definitivo.</li>
-                        <li><strong>Garantia de Vícios Ocultos:</strong> O fornecedor responde técnica e civilmente por anomalias decorrentes de montagem inadequada.</li>
-                        <li><strong>Rastreabilidade Total:</strong> Deve ser garantida a rastreabilidade de materiais, mantendo-se os registros por até 12 meses.</li>
-                    </ol>
+                    O Fornecedor, mediante a aceitação deste escopo (Ref: <span class="id-ref"></span>), compromete-se irrevogavelmente às cláusulas de Primazia de Insumos, Irretratabilidade do Diagnóstico e Rastreabilidade Total de materiais conforme padrões P.A GOLD.
                 </div>
             </div>
             
@@ -178,31 +172,25 @@
     </div>
 
     <div class="actions-bar">
-        <button class="btn btn-add" onclick="document.getElementById('file-input').click()">+ Evidências / Galeria</button>
+        <button class="btn btn-add" onclick="document.getElementById('file-input').click()">+ Galeria / Fotos</button>
         <button class="btn btn-pdf" onclick="window.print()">Gerar PDF</button>
         <input type="file" id="file-input" accept="image/*" multiple style="display: none;">
     </div>
 
     <script>
-        // Data e ID
         document.getElementById('doc-date').innerText = new Date().toLocaleDateString('pt-BR');
         const docId = localStorage.getItem('pa_gold_id') || `PAG-${Date.now().toString().slice(-6)}`;
         document.getElementById('doc-id').innerText = docId;
         document.querySelectorAll('.id-ref').forEach(el => el.innerText = docId);
-        localStorage.setItem('pa_gold_id', docId);
 
-        // Auto-salvamento
         document.querySelectorAll('.save').forEach(input => {
-            input.value = localStorage.getItem('pa_v2_' + input.id) || '';
-            input.addEventListener('input', (e) => localStorage.setItem('pa_v2_' + e.target.id, e.target.value));
+            input.value = localStorage.getItem('pa_v3_' + input.id) || '';
+            input.addEventListener('input', (e) => localStorage.setItem('pa_v3_' + e.target.id, e.target.value));
         });
 
-        // Lógica de Adicionar Fotos
         let itemIdx = 0;
         document.getElementById('file-input').addEventListener('change', function(e) {
             const files = e.target.files;
-            if (!files.length) return;
-
             Array.from(files).forEach(file => {
                 itemIdx++;
                 const reader = new FileReader();
@@ -212,18 +200,16 @@
                     card.innerHTML = `
                         <div class="photo-box">
                             <img src="${event.target.result}">
-                            <button class="remove-btn" onclick="this.parentElement.parentElement.remove()" style="position:absolute;top:5px;left:5px;background:red;color:white;border:none;padding:8px;border-radius:4px;font-weight:bold;z-index:10;">X</button>
+                            <button class="remove-btn" onclick="this.parentElement.parentElement.remove()" style="position:absolute;top:5px;left:5px;background:red;color:white;border:none;padding:5px;border-radius:4px;z-index:10;">X</button>
                         </div>
                         <div class="description-box">
-                            <label style="color:var(--pa-blue); font-weight:bold;">EVIDÊNCIA Nº ${itemIdx.toString().padStart(2, '0')}</label>
-                            <textarea placeholder="Descreva a constatação técnica (ex: desgaste excessivo, trinca, vazamento)..."></textarea>
+                            <label style="color:var(--pa-blue); font-weight:bold;">EVIDÊNCIA ${itemIdx.toString().padStart(2, '0')}</label>
+                            <textarea placeholder="Relato técnico..."></textarea>
                         </div>`;
                     document.getElementById('photo-area').appendChild(card);
-                    card.scrollIntoView({ behavior: 'smooth' });
                 };
                 reader.readAsDataURL(file);
             });
-            this.value = '';
         });
     </script>
 </body>
